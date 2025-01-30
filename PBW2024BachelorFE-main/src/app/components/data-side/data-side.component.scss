@@ -1,0 +1,37 @@
+.bg-blue-500 {
+  background-color: #24C79F;
+  /* Eller en anden farve */
+}
+
+.mobile-view .fc-header-toolbar {
+  display: flex;
+  flex-direction: column !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+html.dark .fc-toolbar-title {
+  color: #ffffff; 
+}
+
+html.dark .fc-col-header-cell-cushion {
+  color: #ffffff;
+}
+
+html.dark .fc-timegrid-slot-label-cushion {
+  color: #ffffff;
+}
+
+html.dark .fc-timegrid-axis-cushion {
+  color: #fff;
+}
+
+html.dark .fc-button-primary {
+  background-color: #000000;
+}
+
+html.dark .ng-tns-c1685646730-0 {
+  background-color: #363d4b;
+  color: #fff;
+}

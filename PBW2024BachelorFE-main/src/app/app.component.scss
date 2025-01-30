@@ -1,0 +1,30 @@
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+.scrollbar-thumb-surface-PrimaryColor::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thumb-surface-PrimaryColor::-webkit-scrollbar-thumb {
+  background-color: #24C79F; 
+  border-radius: 10px;
+}
+
+.scrollbarclass::-webkit-scrollbar-track {
+  background-color: #e5e7eb; 
+}
+
+@media (min-aspect-ratio: 20/9) {
+    .width-class {
+        width:100%;
+        max-width:2560px;
+    }
+  }
+  
+  @media (min-aspect-ratio: 31/9) {
+    .width-class {
+        width:100%;
+        max-width:3480px;
+    }
+  }
+  

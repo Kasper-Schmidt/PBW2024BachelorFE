@@ -1,0 +1,56 @@
+.mobile-view .fc-header-toolbar {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .task-detail {
+    z-index: 1000; 
+    height: auto;
+    
+    background-color: #2ba61a;
+    border: 1px solid #2ba61a;
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    margin: 0.25rem;
+    // position: absolute;
+  }
+  
+  .bg-surface-calendarItem {
+    background-color: #f9f9f9;
+  }
+  
+  .shadow-2xl {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .fc-timegrid-event-harness > .fc-timegrid-event{
+    inset: unset !important;
+    height: 100%;
+    width: 100%;
+  }
+
+  .tooltip_container{
+    position: absolute;
+    width: 300px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  .mobile-view .fc-header-toolbar{
+    order: 1;
+    margin-top: 1.5rem;
+    margin-bottom: 0 !important;
+  }
+  .mobile-view .fc-header-toolbar .fc-toolbar-chunk:first-child{
+    order: 1;
+  }
+
+  html.dark fc-event.main {
+    border: 2px solid black;
+  }

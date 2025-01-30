@@ -1,0 +1,41 @@
+<div class="h-full w-full flex flex-col ">
+  <div
+    class="flex flex-col flex-grow border-2 content-center justify-center overflow-hidden bg-white dark:bg-gray-700"
+  >
+    <app-full-calendar
+      [currentDevice]="currentDevice"
+      [ngClass]="[
+        'w-full',
+        'py-6 px-4',
+        'content-center',
+        currentDevice() === 'desktop'
+          ? ' py-24 max-h-calc-100-minus-100'
+          : 'h-[100%]'
+      ]"
+    ></app-full-calendar>
+
+    @if (currentDevice() !== 'mobile') {
+      <div
+        class="flex flex-row flex-grow w-full justify-end items-center pb-12 pr-12 bg-gray-100 dark:bg-gray-700"
+      >
+      <div class="flex flex-col p-2">
+        <app-theme-change></app-theme-change>
+      </div>
+        <div class="flex flex-col p-2">
+          <p-calendar [(ngModel)]="rangeDates" selectionMode="range" />
+        </div>
+
+        
+        <div class="flex flex-col p-2">
+          <p-button
+            pRipple
+            pButton
+            label="parse"
+            (onClick)="parseData()"
+          ></p-button>
+        </div>
+      
+      </div>
+    }
+  </div>
+</div>

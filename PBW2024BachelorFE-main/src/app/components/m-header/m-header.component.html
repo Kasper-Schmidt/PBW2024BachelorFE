@@ -1,0 +1,91 @@
+<div class="p-4 border-2 flex flex-row">
+  <div class="flex flex-row w-full relative">
+    <div class="user-item flex flex-row p-6 w-full">
+      <!-- Use @if to check if selectedUsers() has at least one user -->
+      @if(selectedUsers().length === 1) {
+      <app-user-avatar
+        [userColor]="selectedUsers()[0].color"
+        [userName]="selectedUsers()[0].name"
+      ></app-user-avatar>
+      } @if(selectedUsers().length > 1) {
+
+      <div class="position_user_avatars flex flex-row">
+        @for (user of selectedUsers(); track $index) {
+
+        <app-user-avatar
+          [userColor]="user.color"
+          [userName]="user.name"
+        ></app-user-avatar>
+
+        }
+      </div>
+
+      } @if(selectedUsers().length === 0) {
+      <p-button
+        icon="pi pi-user"
+        pButton
+        class="w-16 h-16 rounded-full border-2 border-black-500 mr-6"
+      ></p-button>
+      } @if(selectedUsers().length === 1) {
+      <span class="text-2xl font-semibold text-black content-center">
+        {{ selectedUsers()[0].name }}
+      </span>
+      }
+    </div>
+
+    <div class="mx-auto flex justify-center content-center">
+      <p-button
+        class="my-auto p-primary toggleUserMenuBtn"
+        pRipple
+        pButton
+        icon="pi pi-bars"
+        (onClick)="toggleMenuLeft()"
+      />
+    </div>
+  </div>
+
+  @if(showLeftMenu){
+  <div
+    class="absolute border-2 border-l-0 border-black-500 w-[75%] bg-white left-0 top-0 h-full z-50 header_userSide"
+  >
+    <div class="h-full flex flex-col">
+      <div
+        class="h-[65px] min-h-[65px] flex-shrink-0 flex items-center justify-center border-2 border-black-500"
+      >
+        <div
+          class="h-[90%] min-h-[90%] flex items-center w-[85%] hover:cursor-pointer relative"
+        >
+          <input
+            (input)="searchUser($event)"
+            id="searchField"
+            type="text"
+            placeholder="Search..."
+            pInputText
+            class="bg-gray-400 text-white py-2 pl-2 pr-8 w-full"
+          />
+          <div class="absolute right-2">
+            <i class="pi pi-search text-white pr-2"></i>
+          </div>
+        </div>
+
+        @if (deviceType() === 'mobile' || deviceType() === 'tablet') {
+        <div class="ms-5">
+          <button (click)="close()">
+            <i class="pi pi-times"></i>
+          </button>
+        </div>
+        }
+      </div>
+
+      <div
+        class="flex-grow border-2 border-black-500 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-surface-PrimaryColor scrollbar-track-gray-200"
+      >
+        <app-user-list
+          (close)="close()"
+          [ngClass]="{ 'w-full': true }"
+        ></app-user-list>
+      </div>
+    </div>
+  </div>
+  }
+</div>

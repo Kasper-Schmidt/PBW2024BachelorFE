@@ -1,0 +1,45 @@
+<!--Implement @for loop and search string condition -->
+
+@if(searchString() !== ''){ @for (user of teamupStore.getSearchedUsers(); track
+$index) {
+<div
+[ngClass]="{
+  'bg-surface-PrimaryColor': isSelectedUser(user.email),
+  'hover:cursor-pointer hover:bg-surface-lightmodeHover dark:hover:bg-gray-600': !isSelectedUser(user.email)
+}"
+(click)="getUserCalendar(user.email)"
+class="user-item flex flex-row py-4 m-1 rounded"
+title="{{ user.name }}"
+>
+<app-user-avatar
+  [userColor]="user.color || '#000000'"
+  [userName]="user.name"
+></app-user-avatar>
+<span
+  class="text-2xl font-semibold text-black content-center text-ellipsis overflow-hidden text-nowrap dark:text-white"
+  >{{ user.name }}</span
+>
+</div>
+} } @else { @for (user of userList(); track $index) {
+<div
+  [ngClass]="{
+    'bg-surface-PrimaryColor ': isSelectedUser(user.email),
+    'hover:cursor-pointer hover:bg-surface-lightmodeHover': !isSelectedUser(
+      user.email
+    )
+  }"
+  (click)="getUserCalendar(user.email); closeSidebar()"
+  class="user-item flex flex-row py-4 m-1 rounded"
+  title="{{ user.name }}"
+>
+  <app-user-avatar
+    [userColor]="user.color || '#000000'"
+    [userName]="user.name"
+  ></app-user-avatar>
+  <span
+    class="text-2xl font-semibold text-black content-center text-ellipsis overflow-hidden text-nowrap dark:text-gray-100"
+    >{{ user.name }}</span
+  >
+</div>
+} }
+

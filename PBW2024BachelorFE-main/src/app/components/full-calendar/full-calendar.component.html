@@ -1,0 +1,24 @@
+<full-calendar
+  #calendar
+  class="h-[100%]"
+  [ngClass]="{ 'mobile-view': currentDevice() === 'mobile' }"
+  [options]="options"
+></full-calendar>
+
+<!-- toolTip hoverbox -->
+<div
+  class="tooltip_container border-b px-1 py-1 bg-surface-calendarItem mx-1 my-1 rounded shadow-2xl"
+  *ngIf="tooltipVisible()"
+  [style.top.px]="tooltipPosition().top"
+  [style.left.px]="tooltipPosition().left"
+>
+  <div>
+    <p>{{ tooltipData?.email }}</p>
+    <p>{{ tooltipData?.subCalendarName }}</p>
+    <p>{{ tooltipData?.start }}</p>
+
+    <div class="flex flex-row">
+      <div [innerHTML]="tooltipData?.html"></div>
+    </div>
+  </div>
+</div>

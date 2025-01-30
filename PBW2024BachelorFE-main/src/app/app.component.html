@@ -1,0 +1,67 @@
+<div
+  class="flex w-full mx-auto width-class flex-row h-full"
+  [ngClass]="deviceTypeStore.isDesktop() ? 'flex-row' : 'flex-col'"
+>
+  @if(deviceTypeStore.isDesktop()){
+  <div class="h-full w-2/12 border-2 border-black-500 userSideList">
+    <div class="h-full flex flex-col">
+      <div
+        class="h-[65px] min-h-[65px] flex-shrink-0 flex items-center justify-center border-2 border-black-500 dark:bg-gray-700"
+      >
+        <div
+          class="h-[90%] min-h-[90%] flex items-center w-[85%] hover:cursor-pointer relative"
+        >
+          <input
+            (input)="searchUser($event)"
+            id="searchField"
+            type="text"
+            placeholder="Search..."
+            pInputText
+            class="bg-gray-400 text-white py-2 pl-2 pr-8 w-full dark:bg-gray-500"
+          />
+          <div class="absolute right-2">
+            <i class="pi pi-search text-white pr-2"></i>
+          </div>
+        </div>
+        
+        @if (deviceType() === 'mobile' || deviceType() === 'tablet') {
+        <div class="ms-5">
+          <button (click)="close()">
+            <i class="pi pi-times"></i>
+          </button>
+        </div>
+        }
+      </div>
+
+      <div
+        class="flex-grow border-2 border-black-500 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-surface-PrimaryColor scrollbar-track-gray-200 dark:bg-gray-700"
+      >
+        <app-user-list
+          (close)="close()"
+          [ngClass]="{ 'w-full': true }"
+        ></app-user-list>
+      </div>
+    </div>
+  </div>
+  }
+
+  <div
+    class="h-full border-2 border-black-500"
+    [ngClass]="deviceTypeStore.isDesktop() ? ' w-10/12' : 'w-full'"
+  >
+    <app-data-side
+      [ngClass]="[
+        'items-center',
+        'justify-center',
+        'h-full',
+        'overflow-hidden'
+      ]"
+    >
+    </app-data-side>
+  </div>
+  @if(!deviceTypeStore.isDesktop()){
+  <app-m-header></app-m-header>
+  }
+</div>
+
+<router-outlet />
